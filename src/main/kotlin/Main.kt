@@ -272,10 +272,11 @@ fun main() {
                         printStream.println("Список до сортировки: ")
                         linkedList!!.print()
                         printStream.println("Список после сортировки: ")
-                        linkedList.quickSort(
-                            linkedList, 0, linkedList.size()-1,
-                            (MyInt.tc)
-                        )
+                       // linkedList.quickSort(
+                        // linkedList, 0, linkedList.size()-1,
+                        //    (MyInt.tc)
+                       // )
+                        linkedList = linkedList.mergeSort(linkedList,(MyInt.tc))
                         linkedList.print()
                     } catch (nfe: NumberFormatException) {
                         printStream.println("Неправильно введённый тип данных")
@@ -285,10 +286,11 @@ fun main() {
                         printStream.println("Список до сортировки: ")
                         linkedList!!.print()
                         printStream.println("Список после сортировки: ")
-                        linkedList.quickSort(
-                            linkedList, 0, linkedList.size()-1,
-                            (MyFloat.tc)
-                        )
+                   //     linkedList.quickSort(
+                   //         linkedList, 0, linkedList.size()-1,
+                  //          (MyFloat.tc)
+                   //     )
+                        linkedList = linkedList.mergeSort(linkedList,MyFloat.tc)
                         linkedList.print()
                     } catch (nfe: NumberFormatException) {
                         printStream.println("Неправильно введённый тип данных")
@@ -298,10 +300,11 @@ fun main() {
                         printStream.println("Список до сортировки: ")
                         linkedList!!.print()
                         printStream.println("Список после сортировки: ")
-                        linkedList.quickSort(
-                            linkedList, 0, linkedList.size()-1,
-                            (MyString.tc)
-                        )
+                      //  linkedList.quickSort(
+                     //       linkedList, 0, linkedList.size()-1,
+                     //       (MyString.tc)
+                     //   )
+                        linkedList = linkedList.mergeSort(linkedList,MyString.tc)
                         linkedList.print()
                     } catch (nfe: NumberFormatException) {
                         printStream.println("Неправильно введённый тип данных")
@@ -311,10 +314,11 @@ fun main() {
                         printStream.println("Список до сортировки: ")
                         linkedList!!.print()
                         printStream.println("Список после сортировки: ")
-                        linkedList.quickSort(
-                            linkedList, 0, linkedList.size()-1,
-                            (Point().typeComparator)
-                        )
+                        // linkedList.quickSort(
+                   //         linkedList, 0, linkedList.size()-1,
+                   //         (Point().typeComparator)
+                   //     )
+                        linkedList = linkedList.mergeSort(linkedList,Point().typeComparator)
                         linkedList.print()
                     } catch (nfe: NumberFormatException) {
                         printStream.println("Неправильно введённый тип данных")

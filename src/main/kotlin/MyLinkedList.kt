@@ -129,7 +129,60 @@ class MyLinkedList : Serializable {
         if (low < j) quickSort(linkedList, low, j, comparator)
         if (high > i) quickSort(linkedList, i, high, comparator)
     }
+    fun mergeSort(linkedList: MyLinkedList, comparator: Comparator):MyLinkedList{
+        if (linkedList.size <= 1) {
+            return linkedList
+        }
+        val middle = linkedList.size / 2
+        // Разделяем список на две половины
+        var leftLL : MyLinkedList = MyLinkedList()
+        var rightLL : MyLinkedList = MyLinkedList()
+        var current = linkedList.first
+        for(num in 0..<(linkedList.size)){
+            if(num<middle){
+                leftLL.add(current!!.value!!)
+            }else{
+                rightLL.add(current!!.value!!)
+            }
+            current = current.next
+        }
+        // Рекурсивно сортируем каждую половину
+        val sortedLeft = mergeSort(leftLL, comparator)
+        val sortedRight = mergeSort(rightLL, comparator)
 
+        // Объединяем отсортированные половины
+        return merge(sortedLeft, sortedRight, comparator)
+    }
+    fun merge(left:MyLinkedList, right:MyLinkedList,comparator: Comparator):MyLinkedList{
+        var leftIndex = 0
+        var rightIndex = 0
+        val result = MyLinkedList()
+
+        var leftElem = left.first
+        var rightElem = right.first
+        while (leftIndex < left.size && rightIndex < right.size) {
+            if (comparator.compare(leftElem!!.value!!,rightElem!!.value!!)>=0) {
+                result.add(leftElem.value!!)
+                leftIndex++
+                leftElem = leftElem.next
+            } else {
+                result.add(rightElem.value!!)
+                rightIndex++
+                rightElem  = rightElem.next
+            }
+        }
+        while (leftIndex < left.size){
+            result.add(leftElem!!.value!!)
+            leftIndex++
+            leftElem = leftElem.next
+        }
+        while (rightIndex < right.size){
+            result.add(rightElem!!.value!!)
+            rightIndex++
+            rightElem  = rightElem.next
+        }
+        return result
+    }
     fun forEach(forEach: ForEach) {
         var cur = first
         while (cur != null) {
